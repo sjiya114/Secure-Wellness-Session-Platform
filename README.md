@@ -71,7 +71,7 @@ frontend/
    ```sh
    node server.js
    ```
-   The backend runs on [http://localhost:5000](http://localhost:5000).
+   The backend runs on https://backend-lo7b.onrender.com
 
 ### Frontend Setup
 
@@ -91,7 +91,7 @@ frontend/
    ```sh
    npm run dev
    ```
-   The frontend runs on [http://localhost:5173](http://localhost:5173) by default.
+   The frontend runs on https://secure-wellness-session-platform-im.vercel.app/.
 
 ## Usage
 
