@@ -5,6 +5,7 @@ import { useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 function Edit() {
   const {state}=useLocation();
+  const [draft,setDraft]=useState(false);
   const session=state.session || {};
  const [data, setData] = useState({
      title: session.title,
@@ -27,22 +28,32 @@ function Edit() {
        setData({ ...data, [e.target.name]: e.target.value });
    }
    const fileInput = useRef(null);
-   const handleSubmit = async (e) => {
-     e.preventDefault();
-     let formData = new FormData();
-      formData.append("title",data.title);
-    formData.append("description",data.description);
-    formData.append("tags",data.tags);
-    formData.append("image",data.image);
-    formData.append("duration",data.duration);
-    formData.append("location",data.location);
-    formData.append("time",data.time);
-    formData.append("date",data.date);
-    formData.append("seats",data.seats);
-    formData.append("price",data.price);
-    formData.append("requirements",data.requirements);
-    formData.append("status",data.status);
-   }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log(user);
+    const stats=draft?"draft":"published";
+    let formData = new FormData();
+    formData.append("title", data.title);
+    formData.append("description", data.description);
+    formData.append("tags", data.tags);
+    formData.append("image", data.image);
+    formData.append("duration", data.duration);
+    formData.append("location", data.location);
+    formData.append("time", data.time);
+    formData.append("date", data.date);
+    formData.append("seats", data.seats);
+    formData.append("price", data.price);
+    formData.append("requirements", data.requirements);
+    formData.append("status",stats);
+       const res = await axios.post("/session/my-sessions/save-draft", formData, {
+        headers: { "Content-Type": "multipart/form-data" }, // Required for file uploads
+      });
+       console.log(res.data);
+            if(res.data.success)
+            {
+               toast.success(res.data.message);
+            }
+  }
    return (
      <div className='mt-16 max-md:ml-4 max-md:mr-6 max-w-screen-xl mx-auto max-xl:mx-10  '>
        <h1 className='text-black font-bold font-serif text-4xl mb-10'>Edit Session</h1>
@@ -99,8 +110,8 @@ function Edit() {
            <textarea onChange={onChangeHandler} value={data.description} name='description' className='border-1 px-2 py-1 border-gray-600 rounded-md' placeholder='write about yourself...' row={5} cols={6} id=""></textarea>
          </div>
          <div className='flex flex-row space-x-6'>
-         <button className='text-white  my-6 w-fit px-8 py-2 bg-emerald-900 rounded-2xl text-sm'>Save as Draft</button>
-         <button className='text-white  my-6 w-fit px-8 py-2 bg-emerald-900 rounded-2xl text-sm'>Publish Session</button>
+          <button type='submit' className='text-white  my-6 w-fit px-8 py-2 bg-emerald-900 rounded-2xl text-sm'>Publish Session</button>
+          <button type='submit' onClick={()=>{setDraft(true)}}  className='text-white  my-6 w-fit px-8 py-2 bg-emerald-900 rounded-2xl text-sm'>Save as draft</button>
          </div>
        </form>
      </div>

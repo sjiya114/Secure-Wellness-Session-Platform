@@ -13,7 +13,7 @@ function AllSessions() {
     },[]);
   return (
     <div className='max-w-screen-xl mx-auto  flex flex-row flex-wrap justify-between space-y-10 max-xl:mx-10  mt-10'>
-       {session.map((data)=>(
+       {session.map((data)=>(data.status!=="draft" &&
         <Session title={data.title} description={data.description} date={data.date} status={data.status} profile={data.profile} time={data.time}  />
        ))}
     </div>
