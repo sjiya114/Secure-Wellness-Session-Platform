@@ -40,7 +40,7 @@ function Login() {
   
   return (
      <div className='bg-black/80 w-full top-0 bottom-0 left-0 right-0 z-100 fixed'>
-          <div className='fixed py-10 mt-40 shadow-2xl bg-white  px-10 max-md:mx-[12vw] max-md:px-2 mx-[37vw] max-lg:mx-[28vw]   rounded-lg'>
+          <div className='fixed py-10 mt-40 shadow-2xl bg-white  px-10 max-md:mx-[12vw] max-md:px-4 mx-[37vw] max-lg:mx-[28vw]   rounded-lg'>
           <form onSubmit={handleSubmit} className='flex flex-col space-y-1' action="">
             <div className='flex flex-row justify-between'>
              <h1 className='text-black font-bold'  >Login</h1>
