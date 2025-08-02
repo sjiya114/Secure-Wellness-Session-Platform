@@ -53,7 +53,7 @@ function Signup() {
          <h1 className='text-black font-bold'>Create Account</h1>
          <img src={cross_icon} onClick={()=>navigate("/")}  className='w-6 h-6' alt="" />
         </div>
-        <p className='text-gray-500 '>Please signup to book appointment</p>
+        <p className='text-gray-500 '>Please signup to visit sessions</p>
         <label htmlFor="">FullName</label>
         <input onChange={onChangeHandler} name='name' value={data.name}  className='border-1 border-gray-700 rounded-lg py-1 px-1' type="text" />
         <label htmlFor="">Email</label>

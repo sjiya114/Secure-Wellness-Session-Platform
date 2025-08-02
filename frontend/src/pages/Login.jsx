@@ -46,7 +46,7 @@ function Login() {
              <h1 className='text-black font-bold'  >Login</h1>
              <img src={cross_icon} onClick={()=>{navigate("/")}} className='w-6 h-6' alt="" />
             </div>
-            <p className='text-gray-500 '>Please login to book appointment</p>
+            <p className='text-gray-500 '>Please login to visit sessions</p>
             <label htmlFor="">Email</label>
             <input className='border-1 border-gray-700 rounded-lg py-1 px-1' onChange={onChangeHandler} name='email' value={data.email} type="text" />
             <label htmlFor="">Password</label> 
