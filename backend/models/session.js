@@ -1,0 +1,53 @@
+const mongoose=require('mongoose');
+const sessionSchema=new mongoose.Schema({
+user_id:{
+type:mongoose.Types.ObjectId,ref:'users'}, 
+title:{type:String}, 
+description:{type:String},
+tags:{
+    type:Array,
+    default:[]
+}, 
+profile:
+{
+    type:String
+},
+duration: {
+    type:String
+},
+location:{
+    type:String
+},
+time:
+{
+ type:String
+},
+date:
+{
+ type:String
+},
+seats:{
+     type:Number,
+     default:0
+},
+booked:{
+     type:Number,
+     default:0
+},
+price:{
+     type:Number
+},
+requirements:{
+    type:Array,
+    default:[]
+},
+status:{
+    type:String,
+    default:'draft',
+    values:['draft','published']
+}
+},{
+    timestamps:true
+});
+sessionSchema.index=({tags:"text",title:"text"})
+module.exports=mongoose.model("sessions",sessionSchema);
