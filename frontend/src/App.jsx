@@ -20,6 +20,7 @@ import Sessions from './pages/CRUD/Sessions'
 import { useContext } from 'react'
 import { AppContext } from './context/AppContext'
 import Edit from './pages/CRUD/Edit'
+import Contact from './pages/Contact'
 
 function App() {
   const {token}=useContext(AppContext);
@@ -41,6 +42,7 @@ function App() {
           <Route path="/crud/edit"  element={<Sessions/>}  ></Route>
            <Route path="/crud/update"  element={<Edit/>}  ></Route>
          </Route>}
+         <Route path="/contact" element={<Contact/>}  ></Route>
        </Routes>
        <Footer/>
     </div>
