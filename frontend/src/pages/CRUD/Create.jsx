@@ -30,13 +30,17 @@ function Create() {
   if (autoSaveTimer) {
     clearTimeout(autoSaveTimer);
   }
-  const timer = setTimeout(() => {
+   // Save after 5 seconds of inactivity
+  const inactivityTimer = setTimeout(() => {
     autoSaveDraft();
-  }, 1000); // Save 1 second after user stops typing
-
-  setAutoSaveTimer(timer);
-
-  return () => clearTimeout(timer);
+  }, 5000);
+ setAutoSaveTimer(inactivityTimer);
+  // Save every 30 seconds regardless of typing
+  const intervalTimer = setInterval(() => {
+    autoSaveDraft();
+  }, 30000);
+  return () =>{ clearTimeout(inactivityTimer);
+    clearInterval(intervalTimer);}
 }, [data]);
   const autoSaveDraft = async () => {
     try {
