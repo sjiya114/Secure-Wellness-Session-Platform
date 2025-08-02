@@ -52,8 +52,7 @@ function Login() {
             <label htmlFor="">Password</label> 
             <input className='border-1 border-gray-700 rounded-lg py-1 px-1' onChange={onChangeHandler} name='password' value={data.password} type="password" />
             <button className='bg-indigo-950 mt-2 rounded-md px-2 py-2  text-white'>Login</button>
-            <p>Dont't have an account?<b onClick={()=>{navigate("/signup")}} className='cursor-pointer' >Signup here</b></p>
-            <p onClick={()=>{navigate("/resetotp")}}  >Forget Password</p>
+            <p>Don't have an account?<b onClick={()=>{navigate("/signup")}} className='cursor-pointer' >Signup here</b></p>
           </form>
         </div>
         </div>
